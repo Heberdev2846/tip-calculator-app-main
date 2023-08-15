@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+  <title>Frontend Mentor | Tip calculator app</title>
+  <style>
+    /* ... Estilos CSS ... */
+  </style>
+</head>
+<body>
+  <div class="titulo">
+    <img src="./images/logo.svg" alt="" width="50px" />
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="bill-form">
+        <p>Bill</p>
+        <div class="peso">
+          <img src="./images/icon-dollar.svg" alt="" />
+          <input type="text" name="" id="" />
+        </div>
+        <p class="tip">Select Tip %</p>
+        <div class="button-container">
+          <div class="row">
+            <button id="tip-5">5%</button>
+            <button id="tip-10">10%</button>
+            <button id="tip-15" class="boton3">15%</button>
+          </div>
+          <div class="row">
+            <button id="tip-25">25%</button>
+            <button id="tip-50">50%</button>
+            <button class="custom">Custom</button>
+          </div>
+        </div>
+        <p class="tip">Number of People</p>
+        <div class="persona">
+          <img src="./images/icon-person.svg" alt="" />
+          <input type="text" name="" id="" />
+        </div>
+      </div>
+      <div class="bill-result">
+        <p class="titulo2">
+          Tip Amount <br />
+          <span>/ person</span>
+          <input type="text" class="inputder" placeholder="$" />
+        </p>
+        <p class="titulo2">
+          Total <br />
+          <span>/ person</span>
+          <input type="text" class="inputder" placeholder="$" />
+        </p>
+        <button class="reset">RESET</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Seleccionar elementos del DOM
+      const billInput = document.querySelector('.bill-form input');
+      const tipButtons = document.querySelectorAll('.button-container button[id^="tip-"]');
+      const customTipInput = document.querySelector('.button-container .custom');
+      const peopleInput = document.querySelector('.persona input');
+      const tipAmountInput = document.querySelector('.inputder:first-of-type');
+      const totalAmountInput = document.querySelector('.inputder:last-of-type');
+      const resetButton = document.querySelector('.reset');
+
+      // Calcular el monto de la propina y el monto total
+      const calculateAmounts = () => {
+        const billAmount = parseFloat(billInput.value);
+        const tipPercentage = parseFloat(customTipInput.value) || parseFloat(this.dataset.tip);
+        const numberOfPeople = parseFloat(peopleInput.value);
+
+        if (billAmount && tipPercentage && numberOfPeople) {
+          const tipAmount = (billAmount * (tipPercentage / 100)) / numberOfPeople;
+          const totalAmount = (billAmount + (billAmount * (tipPercentage

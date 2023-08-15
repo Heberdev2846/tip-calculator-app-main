@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <style>
+      html {
+        background: hsl(185, 41%, 84%);
+        font-family: Space Mono;
+        font-size: 10px;
+      }
+      .titulo {
+        position: fixed;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .card {
+        width: 650px;
+        height: 330px;
+        background: rgb(255, 255, 255);
+        border-radius: 15px;
+        display: flex;
+        color: hsl(183, 100%, 15%);
+      }
+      .contenido {
+        margin-left: 25px;
+        margin-top: 20px;
+        color: hsl(183, 100%, 15%);
+      }
+      input {
+        width: 250px;
+        height: 28px;
+        border-radius: 4px;
+        border: solid;
+        border-color: white;
+        text-align: right;
+        font-family: Space Mono;
+        font-weight: bold;
+        background-color: hsl(189, 41%, 97%);
+        color: hsl(183, 100%, 15%);
+      }
+      .card2 {
+        margin-left: 30px;
+        margin-top: 20px;
+        width: 290px;
+        height: 285px;
+        border-style: solid;
+        background: hsl(183, 100%, 15%);
+        border-radius: 10px;
+        border-color: hsl(183, 100%, 15%);
+      }
+      .peso {
+        position: relative;
+        display: inline-block;
+      }
+      .peso input {
+        padding-right: 20px;
+      }
+      .peso img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 12px;
+        margin-left: 6px;
+      }
+      .tip {
+        margin-top: 20px;
+        color: hsl(183, 100%, 15%);
+        font-weight: 700;
+      }
+      .button-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .row {
+        display: flex;
+        margin-bottom: 4px;
+      }
+      button {
+        width: 87px;
+        margin: 3px;
+        height: 35px;
+        background-color: hsl(183, 100%, 15%);
+        border-radius: 4px;
+        border: none;
+        font-family: Space Mono;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+      }
+      .boton3 {
+        background: hsl(172, 67%, 45%);
+        color: hsl(183, 100%, 15%);
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .custom {
+        background: hsl(0, 0%, 100%);
+        color: hsl(184, 14%, 56%);
+        font-weight: bold;
+      }
+      .persona {
+        position: relative;
+        display: inline-block;
+      }
+      .persona input {
+        padding-right: 20px;
+      }
+      .persona img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 12px;
+        margin-left: 6px;
+      }
+      .titulo2 {
+        margin-top: 35px;
+        margin-left: 25px;
+        color: white;
+        font-weight: bold;
+      }
+      span {
+        color: hsl(186, 14%, 43%);
+        font-weight: 700;
+      }
+      .inputder {
+        width: 120px;
+        float: right;
+        margin-right: 30px;
+        margin-top: -18px;
+        background-color: hsl(183, 100%, 15%);
+        border: none;
+        color: hsl(172, 67%, 45%);
+        font-size: 22px;
+      }
+      .reset {
+        width: 230px;
+        height: 30px;
+        border-style: solid;
+        background: hsl(172, 67%, 45%);
+        border-color: hsl(172, 67%, 45%);
+        display: flex;
+        align-items: center;
+        color: hsl(183, 100%, 15%);
+        margin-top: 110px;
+        margin-left: 30px;
+        justify-content: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="titulo">
+      <img src="./images/logo.svg" alt="" width="50px" />
+    </div>
+    <div class="container">
+      <div class="card">
+        <div class="contenido">
+          <p>Bill</p>
+          <div class="peso">
+            <img src="./images/icon-dollar.svg" alt="" />
+            <!--<input type="text" name="" id="" />-->
+            <input
+              type="text"
+              id="tipInput"
+              placeholder="Ingresa un tip"
+              oninput="actualizarTip()"
+            />
+          </div>
+          <p class="tip">Select Tip %</p>
+          <div class="button-container">
+            <div class="row">
+              <button>5%</button>
+              <button>10%</button>
+              <button class="boton3">15%</button>
+            </div>
+            <div class="row">
+              <button>25%</button>
+              <button>50%</button>
+              <button class="custom">Custom</button>
+            </div>
+          </div>
+          <p class="tip">Number of People</p>
+          <div class="persona">
+            <img src="./images/icon-person.svg" alt="" />
+            <input type="text" name="" id="people" oninput="actualizarTip()" />
+          </div>
+        </div>
+        <div class="card2">
+          <p class="titulo2">
+            Tip Amount <br />
+            <span>/ person</span>
+            <input
+              type="text"
+              class="inputder"
+              placeholder="$"
+              id="tipAmount"
+            />
+          </p>
+          <p class="titulo2">
+            Total <br />
+            <span>/ person</span>
+            <input
+              id="tipDisplay"
+              type="text"
+              class="inputder"
+              placeholder="$"
+            />
+          </p>
+          <button class="reset">RESET</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function actualizarTip() {
+        var tipValue = document.getElementById("tipInput").value;
+        var people = document.getElementById("people").value;
+
+        var totalPerson = tipValue / people;
+        var tipPerson = totalPerson / 10;
+        var totalPerson = totalPerson - tipPerson;
+
+        var tipDisplay = document.getElementById("tipDisplay");
+        tipDisplay.value = totalPerson;
+
+        var tipAmount = document.getElementById("tipAmount");
+        tipAmount.value = tipPerson;
+      }
+    </script>
+    <!-- <script>
+      function actualizarTip() {
+        var tipValue = document.getElementById("tipInput").value;
+        console.log(tipValue);
+        var tipDisplay = document.getElementById("tipDisplay");
+        tipDisplay.value = tipValue / 10;
+      }
+    </script> -->
+  </body>
+</html>
